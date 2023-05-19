@@ -1,8 +1,14 @@
 <template>
   <div class="btn-group">
-    <button class="btn btn-dark">Barcha kinolar</button>
-    <button class="btn btn-outline-dark">Mashxur kinolar</button>
-    <button class="btn btn-outline-dark">Eng ko'p ko'rilgan kinolar</button>
+
+
+    <button v-for="item in filterItems"
+            class="btn"
+            :key="item.name"
+            :class="[item.name===filterName ? 'btn-dark' : 'btn-outline-dark']"
+    @click="clickFilterItem(item.name)">
+      {{item.title}}
+    </button>
 
   </div>
 
@@ -10,7 +16,30 @@
 
 <script>
 export default {
-
+  data() {
+    return {
+      filterName: 'all',
+      filterItems: [
+        {
+          name: 'all',
+          title: 'Barcha kinolar'
+        },
+        {
+          name: 'famous',
+          title: 'Mashxur kinolar'
+        },
+        {
+          name: 'mostWatched',
+          title: "Eng ko'p ko'rilgan kinolar"
+        },
+      ],
+    }
+  },
+  methods: {
+    clickFilterItem(newFilterName) {
+      this.filterName = newFilterName
+    }
+  }
 }
 </script>
 

@@ -1,13 +1,19 @@
 <template>
-  <li class="list-group-item d-flex justify-content-between" :class="[{like: movie.like}, {favorite: movie.favorite}]">
-    <span class="list-group-item-label">{{movie.name}}</span>
+  <li class="list-group-item d-flex justify-content-between"
+      :class="[{like: movie.like}, {favorite: movie.favorite}]"
+  >
+    <span
+        class="list-group-item-label"
+        @click="onClick">
+      {{movie.name}}
+    </span>
     <input type="number" class="list-group-item-input" v-bind:value="movie.viewers">
     <div class="d-flex justify-content-center align-items-center ">
-      <button type="button" class="btn-cookie btn-sm">
+      <button type="button" class="btn-cookie btn-sm" @click="clickCookie">
         <i class="fas fa-cookie"></i>
       </button>
 
-      <button type="button" class="btn-trash btn-sm">
+      <button type="button" class="btn-trash btn-sm" @click="clickTrash">
         <i class="fas fa-trash"></i>
       </button>
 
@@ -22,8 +28,34 @@ export default {
     movie: {
       type: Object,
       required: true
+    },
+  },
+  methods: {
+    onClick() {
+      this.movie.like =! this.movie.like
+      // this.$emit('movieListItemFunc', (app)=> {
+        // app.movies = app.movies.map((val)=> {
+        //   if (val.id===this.movie.id) {
+        //     val.like = !val.like
+        //   }
+        //   return val
+        // })
+      // })
+    },
+    clickCookie() {
+      this.movie.favorite =! this.movie.favorite
+    },
+    clickTrash()  {
+      this.$emit('movieListItemFunc', (app)=> {
+        app.movies = app.movies.filter((val)=> {
+          if (val.id===this.movie.id) {
+            return
+          }
+          return val
+        })
+      })
     }
-  }
+  },
 }
 </script>
 

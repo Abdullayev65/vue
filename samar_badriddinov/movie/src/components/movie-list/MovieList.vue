@@ -1,6 +1,10 @@
 <template>
   <ul class="movie-list list-group">
-    <MovieListItem v-for="movie in movies" v-bind:movie="movie"/>
+    <MovieListItem
+        v-for="movie in movies" v-bind:movie="movie"
+        :key="movie.id"
+        @movieListItemFunc="movieListItemFunc"
+    />
   </ul>
 
 </template>
@@ -10,31 +14,17 @@ import MovieListItem from "@/components/movie-list-item/MovieListItem.vue";
 
 export default {
   components: {MovieListItem},
-  data() {
-    return {
-      movies: [
-        {
-          name: "Back Adam",
-          viewers: 1573,
-          favorite: false,
-          like: false
-        },
-        {
-          name: "Red Adam",
-          viewers: 1735,
-          favorite: true,
-          like: false
-        },
-        {
-          name: "Why?",
-          viewers: 125,
-          favorite: false,
-          like: true
-        },
-      ]
+  props: {
+    movies: {
+      type: Array,
+      required: true,
+    }
+  },
+  methods: {
+    movieListItemFunc(func) {
+      this.$emit("movieListItemFunc", func)
     }
   }
-
 }
 </script>
 
