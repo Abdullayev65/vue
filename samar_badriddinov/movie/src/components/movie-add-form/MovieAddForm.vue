@@ -27,9 +27,13 @@ export default {
   },
   methods: {
     addMovie() {
-      if (this.name === '' || this.viewers === '') {
-        return alert('Barcha malumotlarni kiriting!')
-      }
+      if (this.name === '')
+        this.name = 'unknown'
+      if (this.viewers === '')
+        this.viewers = 0
+      // if (this.name === '' || this.viewers === '') {
+      //   return alert('Barcha malumotlarni kiriting!')
+      // }
       const newMovie = {
         id: Date.now(),
         name: this.name,

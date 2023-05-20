@@ -13,6 +13,7 @@ export default {
 
 <style scoped>
 .box {
+  margin-top: 1.5rem;
   padding: 1.5rem;
   border-color: #fcfaf5;
   border-radius: 4px;

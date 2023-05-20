@@ -1,6 +1,10 @@
 <template>
   <ul class="movie-list list-group">
+    <Box v-if="movies.length==0">
+      <p class="text-center fs-3 text-danger">Kinolar Yo'q</p>
+    </Box>
     <MovieListItem
+        v-else
         v-for="movie in movies" v-bind:movie="movie"
         :key="movie.id"
         @movieListItemFunc="movieListItemFunc"
@@ -11,9 +15,10 @@
 
 <script>
 import MovieListItem from "@/components/movie-list-item/MovieListItem.vue";
+import Box from "@/ui-components/Box.vue";
 
 export default {
-  components: {MovieListItem},
+  components: {Box, MovieListItem},
   props: {
     movies: {
       type: Array,
