@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@material/textfield": "^14.0.0",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0"
   },

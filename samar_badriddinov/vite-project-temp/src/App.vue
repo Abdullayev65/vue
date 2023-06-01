@@ -1,21 +1,17 @@
 <template>
-  <div>
-    <h1>
-      H W ! {{counter}}
-    </h1>
-    <button v-on:click="onIncrement" class="">
-      Add
-    </button>
-    <button v-on:click="onDecrement" class="">
-      Del
-    </button>
-    <App v-if="counter>3" />
-  </div>
+
+  <Lvl>
+    <Lvl>
+      <Lvl>
+
+      </Lvl>
+    </Lvl>
+  </Lvl>
 
 </template>
 
 <script>
-import App from "@/App.vue";
+import Lvl from "@/Lvl.vue";
 export default {
   data() {
     return {
@@ -30,9 +26,9 @@ export default {
       this.counter--
     }
   },
-  components:{
-    App
-  }
+  components: {
+    Lvl
+  },
 }
 </script>
 
